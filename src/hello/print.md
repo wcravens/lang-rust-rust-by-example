@@ -3,12 +3,16 @@
 Printing is handled by a series of [`macros`][macros] defined in
 [`std::fmt`][fmt] some of which include:
 
-* `format!`: write formatted text to [`String`][string]
+* `format!`: write formatted text to [`String`][string]  
+
 * `print!`: same as `format!` but the text is printed to the console
   (io::stdout).
+
 * `println!`: same as `print!` but a newline is appended.
+
 * `eprint!`: same as `print!` but the text is printed to the standard error
   (io::stderr).
+
 * `eprintln!`: same as `eprint!` but a newline is appended.
 
 All parse text in the same fashion. As a plus, Rust checks formatting
@@ -16,15 +20,17 @@ correctness at compile time.
 
 ```rust,editable,ignore,mdbook-runnable
 fn main() {
-    // In general, the `{}` will be automatically replaced with any
-    // arguments. These will be stringified.
+    // `{}` placehholders are filled with stringified arguments.
     println!("{} days", 31);
+}
+```
 
-    // Positional arguments can be used. Specifying an integer inside `{}`
-    // determines which additional argument will be replaced. Arguments start
-    // at 0 immediately after the format string.
+```rust,editable,ignore,mdbook-runnable
+    // Positional arguments can be used.
     println!("{0}, this is {1}. {1}, this is {0}", "Alice", "Bob");
+```
 
+```rust,editable,ignore,mdbook-runnable
     // As can named arguments.
     println!("{subject} {verb} {object}",
              object="the lazy dog",
